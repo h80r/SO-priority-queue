@@ -3,7 +3,7 @@ import 'dart:math';
 import 'pcb.dart';
 
 class Queue {
-  Queue({required this.qid}) {
+  Queue(this.qid) {
     final rand = Random();
 
     priority = rand.nextInt(10);
