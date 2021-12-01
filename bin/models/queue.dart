@@ -35,10 +35,14 @@ class Queue {
     currentPID = (currentPID + 1) % _pcbs.length;
   }
 
-  void printQueue() {
-    print(this);
-    for (final pcb in _pcbs) {
-      print(pcb.toString());
+  void printQueue({bool isCurrent = false}) {
+    print(isCurrent ? '\x1B[33m${this}\x1B[0m' : this);
+    for (var i = 0; i < _pcbs.length; i++) {
+      print(isCurrent
+          ? i == currentPID
+              ? '\x1B[36m${_pcbs[i]}\x1B[0m'
+              : '\x1B[33m${_pcbs[i]}\x1B[0m'
+          : _pcbs[i]);
     }
   }
 

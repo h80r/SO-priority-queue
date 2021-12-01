@@ -34,11 +34,14 @@ void main(List<String> arguments) async {
     if (queues.every((q) => q.isEmpty)) break;
 
     final currentQueue = queues.firstWhere((q) => !q.isEmpty);
-    await currentQueue.run();
 
     print(Process.runSync("clear", [], runInShell: true).stdout);
     for (final q in queues) {
-      q.printQueue();
+      q.printQueue(isCurrent: q == currentQueue);
     }
+
+    await currentQueue.run();
   }
+
+  print(Process.runSync("clear", [], runInShell: true).stdout);
 }
