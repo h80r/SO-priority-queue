@@ -27,13 +27,20 @@ class PCB {
 
   bool get isFinished => pendingExecutionTime == 0;
 
-  void run(int delta) {
+  Future<void> run(int delta) async {
     while (delta != 0 && pendingExecutionTime != 0) {
-      Future.delayed(Duration(seconds: 1)).then((_) {
-        pendingExecutionTime--;
-        delta--;
-      });
+      await Future.delayed(Duration(seconds: 1));
+
+      pendingExecutionTime--;
+      delta--;
     }
+  }
+
+  @override
+  String toString() {
+    return '\t[$pid] $name (${pendingExecutionTime}s)'
+        '\n\t\tPointers: [$startingAddress - $endingAddress]'
+        '\n\t\tCreated at: $creation';
   }
 }
 

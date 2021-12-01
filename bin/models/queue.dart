@@ -21,15 +21,25 @@ class Queue {
     _pcbs.add(newPCB);
   }
 
-  PCB? removePCB() {
-    if (_pcbs.isEmpty) return null;
-    return _pcbs.removeAt(0);
+  bool get isEmpty => _pcbs.isEmpty;
+
+  Future<void> run() async {
+    await _pcbs[currentPID].run(delta);
+
+    if (_pcbs[currentPID].isFinished) {
+      _pcbs.removeAt(currentPID);
+      currentPID = _pcbs.isEmpty ? 0 : currentPID % _pcbs.length;
+      return;
+    }
+
+    currentPID = (currentPID + 1) % _pcbs.length;
   }
 
-  void run() {
-    if (_pcbs.isEmpty) return;
-    _pcbs[currentPID].run(delta);
-    currentPID = (currentPID + 1) % _pcbs.length;
+  void printQueue() {
+    print(this);
+    for (final pcb in _pcbs) {
+      print(pcb.toString());
+    }
   }
 
   @override
