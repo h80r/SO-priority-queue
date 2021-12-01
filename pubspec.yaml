@@ -12,3 +12,5 @@ environment:
 
 dev_dependencies:
   lints: ^1.0.0
+dependencies: 
+  interact: ^2.1.1
