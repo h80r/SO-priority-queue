@@ -17,6 +17,10 @@ Um projeto simples para linha de comando em dart que demonstra conceitos de fila
 
 3. Executar o comando `dart run` na raiz do projeto para executar o programa.
 
+4. É possível que ocorra incompatibilidade com o terminal em que o programa será executado, deste modo, insira o número de filas que deseja simular (5, por exemplo) e pressione enter.
+
+5. Caso tenha ocorrido incompatibilidade, depois de pressionar enter insira a quantidade de processos que deseja simular (20, por exemplo) e pressione enter novamente.
+
 ## Resultados observados
 
 Caso não seja possível executar o código, ou não seja interessante fazê-lo, realizei uma rodada de teste em meu ambiente local e disponibilizarei os resultados aqui para fácil avaliação:
